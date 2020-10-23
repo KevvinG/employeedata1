@@ -1,5 +1,6 @@
 package com.example.employeedata1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.employeedata1.databinding.ActivityInputBinding
@@ -33,6 +34,11 @@ class OutputActivity : AppCompatActivity() {
             txtTrained.text = data.employeeName + " " + trained
             txtCertified.text = data.employeeName + " " + certified
         }
+            binding.btnBack.setOnClickListener {
+                startActivity(Intent(this, InputActivity::class.java))
+
+                }
+
 
     }
 }
