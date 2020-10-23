@@ -30,9 +30,9 @@ class OutputActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            txtName.text = data.employeeName
-            txtTrained.text = data.employeeName + " " + trained
-            txtCertified.text = data.employeeName + " " + certified
+            txtName.text = data.employeeName + "\n"
+            txtTrained.text = data.employeeName + " " + trained + "\n"
+            txtCertified.text = data.employeeName + " " + certified + "\n"
         }
             binding.btnBack.setOnClickListener {
                 startActivity(Intent(this, InputActivity::class.java))
