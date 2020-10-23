@@ -1,5 +1,6 @@
 package com.example.employeedata1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,24 +14,24 @@ class InputActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.apply {
-            val name = empName.text.toString()
-            val trained = chkTrained.isChecked
-            val certified = chkCertified.isChecked
-            val empData = EmployeeModel(name, trained, certified)
-            btnSubmit.setOnClickListener {
-                submit(empData)
-            }
+        binding.btnSubmit.setOnClickListener {
+            submit()
         }
 
-    }
+    }//onCreate
 
-    private fun submit(data: EmployeeModel) {
-        if (data.employeeName == "") {
+    private fun submit() {
+        var name = binding.empName.text.toString()
+        var trained = binding.chkTrained.isChecked
+        var certified = binding.chkCertified.isChecked
+        val data = EmployeeModel(name, trained, certified)
+        if (data.employeeName == "" || data.employeeName == "Name") {
             Toast.makeText(applicationContext, "Please enter a name", Toast.LENGTH_LONG).show()
         } else {
-
-        }
-    }
+            val intent = Intent(this, OutputActivity::class.java).apply{
+                putExtra("data", data)
+            }
+            startActivity(intent)
+        }//else
+    }//submit
 }
